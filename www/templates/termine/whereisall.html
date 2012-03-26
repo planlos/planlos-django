@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h4>Wo ist was?</h4>
+{% if locations %}
+    {% for e in locations %}
+<div id="location">
+  {{ e.name }}<br>
+  {{ e.address}}<br>
+  <a href="{{ e.get_absolute_url }}">more...</a></p>
+
+  </div>
+    {% endfor %}
+{% else %}
+    <p>No Locations are available.</p>
+{% endif %}
+{% endblock %}

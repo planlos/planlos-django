@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h4>Neuen Eintrag erstellen</h4>
+<p>
+
+{% if form.has_errors %}
+<h2>Please correct the following error{{ form.errors|pluralize }}:</h2>
+{% endif %}
+
+
+<form action="/aktuelles/create" method="post">
+<p><label for="id_title">Title:</label> {{ form.title }}</p>
+<p><label for="id_address">Text:</label> {{ form.content }}</p>
+<p><label for="id_address">Author:</label> {{ form.author }}</p>
+<input type="submit" value="Publish" />
+</form>
+</p>
+
+This is a lifesaver when debugging!
+<p> {{ form.error_dict }} </p>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load calendar_tags %}
+
+{% show_calendar "today" %}
+{# last_vote #}
+
+<div class="planlosfeeds">
+<h2>Feeds</h2>
+<table>
+<tr>
+<td><img src="/media/images/feed-icon-28x28.png"></img></td>
+<td> <a href="/feeds/termine/">Termine als RSS-Feed</a><br>
+     <a href="/feeds/heute/">Heute als RSS-Feed</a><br>
+
+</tr>
+</table>
+</div>
+{% show_termine %}
+{% show_featured_event %}
+{% show_rot_flyer %}

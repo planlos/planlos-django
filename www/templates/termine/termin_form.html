@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<p>
+<form action="{% url kalender.create %}" method="post">{% csrf_token %}
+<div class="form-row">
+<p><label for="id_datum">Datum:</label> {{ form.datum }}</p>
+  </div>
+<p><label for="id_time">Zeit:</label> {{ form.time }}</p>
+<p><label for="id_title">Title:</label> {{ form.title }}</p>
+<p><label for="id_short_desc">Short:</label> {{ form.short_desc }}</p>
+<p><label for="id_desc">Desc:</label> {{ form.desc }}</p>
+<p><label for="id_ext_url">URL:</label> {{ form.ext_url }}</p>
+<p><label for="id_location">Location:</label> {{ form.location }}</p>
+</form>
+</p>
+{% endblock %}
+
+

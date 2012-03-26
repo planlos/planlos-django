@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block submenu %}
+<div class="submenu">
+  <span style="font-size:large">
+<a href="/termine/create">Neuen Termin erstellen</a>
+  &nbsp;&nbsp;
+<a href="/termine/logout">Logout</a>
+  </span>
+</div>
+{% endblock %}
+
+{% block content %}
+<h2>Termin bearbeiten</h2>
+
+<h4>Kleine Hilfe</h4>
+<p>
+Das Datum bitte im Format YYYY-MM-DD (Jahr (4-stellig) - Monat
+(2-stellig) - Tag (2-stellig) )
+und die Zeit bitte im Format (22:00) angeben.<br />
+Achtet bitte darauf, wenn Ihr Flyer hochladen möchtet, dass diese
+nicht zu groß sind (~50kb). Der Flyer wird ohnehin nur skaliert auf
+der Seite angezeigt.
+</p>
+
+<p>
+<form action="/termine/edit/{{termin_id}}/" enctype="multipart/form-data" method="post">{% csrf_token %}
+<table>{{ terminform.as_table }}</table>
+<input type="submit" value="Publish" />
+</form>
+</p>
+{% endblock %}

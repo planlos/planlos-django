@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block submenu %}
+{% include "termine/tage_menu.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% if title %}
+<h2>{{title}} ({{today|date:"d.m.y"}})</h2>
+{% else %}
+<h2>{{today|date:"d.m.y"}}</h2>
+{% endif %}
+
+{% if entries %}
+    {% for e in entries %}
+
+    {% include "termine/termin_short.html" %}
+
+    {% endfor %}
+{% else %}
+    <p>Nix los...!</p>
+{% endif %}
+
+<h2>Regelmäßige Termine</h2>
+
+{% if regulars %}
+    {% for e in regulars %}
+
+    {% include "termine/termin_short.html" %}
+
+    {% endfor %}
+{% else %}
+Für diesen Tag gibt es keine regelmäßigen Termine.
+{% endif %}
+{% endblock %}

@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block submenu %}
+<div class="submenu">
+  <span style="font-size:large">
+<a href="/termine/create">Neuen Termin erstellen</a>
+  &nbsp;&nbsp;
+<a href="/termine/logout">Logout</a>
+  </span>
+</div>
+{% endblock %}
+
+{% block content %}
+
+
+<p>
+<form action="termine/fast_admin/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<table class="fast">
+<tr><th>Titel</th>
+    <th>Gruppe</th>
+    <th>Beschreibung</th>
+    <th>Datum</th>
+    <th>Typ</th>
+    <th>Ort</th>
+    <th>Publish</th>
+</tr>
+{% for item in unpublished %}
+
+<tr>
+<td><a href="{{item.get_absolute_url}}">{{item.title}}</a></td>
+<td>{{item.group}}</td>
+<td>{{item.short_desc}}</td>
+<td>{{item.type}}</td>
+<td>{{item.datum}}<br/>{{item.time}}</td>
+<td>{{item.location}}</td>
+<td><input type="checkbox" name="{{item.id}}" value="{{item.id}}"></td>
+</tr>
+{% endfor %}
+</table>
+
+
+<input type="submit" name"{{item.title}}" value="Publish" />
+</form>
+</p>
+
+{% endblock %}

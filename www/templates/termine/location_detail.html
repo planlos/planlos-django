@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% load markup %}
+<h2>{{object.name}}</h2>
+<div class="addressblock">
+  <h4>Adresse:<h4>
+  {{object.address|linebreaks}}
+  </div>
+<p>
+  {{ object.selfportrait|textile}}
+</p>
+<p>
+{% if object.image %}
+<img src="{{object.image.url}}"/>
+{% endif %}
+</p>
+<p>
+Im Internet: <a href="{{object.url}}">{{object.url}}</a>
+</p>
+
+{% endblock %}
+

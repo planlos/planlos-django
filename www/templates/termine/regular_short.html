@@ -1,0 +1,15 @@
+<div class="entry">
+<div class="title">{{ r.title }}<div class="location">
+  {% if r.exturl %}
+  <a href=" {{r.exturl}} ">{{r.location}}</a>
+  {% else %}
+	  {{r.location.name}}
+  {% endif %}
+</div>
+</div>
+<div class="date">{{r.datum|date:"d.m.y"}} um {{r.time|time:"G"}} Uhr</div>
+
+<p>{{r.short_desc}}</p>
+<p><a href="{{ r.get_absolute_url }}">more...</a></p>
+</div>
+

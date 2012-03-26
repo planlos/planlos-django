@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% spaceless %}
+<head>
+  <title>Planlos Bremen</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15" />
+  <link rel="shortcut icon" href="/media/images/favicon.ico" />
+  <!-- <link rel="stylesheet" type="text/css" href="/media/admin/css/forms.css" /> -->
+  <link rel="stylesheet" type="text/css" href="/media/admin/css/widgets.css" /> 
+  <link href="/media/css/planlos.css" rel="stylesheet" type="text/css"/>
+  <link href="/media/css/graphs.css" rel="stylesheet" type="text/css"/>
+
+  <link rel="alternate" type="application/rss+xml" href="/feeds/termine" />
+  <link rel="alternate" type="application/rss+xml" href="/feeds/aktuelles" />
+  <link rel="alternate" type="application/rss+xml" href="/feeds/heute" />
+
+
+<!--  <script type="text/javascript" src="/planlos/admin/jsi18n/"></script> -->
+  <script type="text/javascript" src="/admin/jsi18n/"></script>
+  <script type="text/javascript" src="/media/admin/js/core.js"></script>
+  <script type="text/javascript" src="/media/admin/js/admin/RelatedObjectLookups.js"></script>
+  <script type="text/javascript" src="/media/admin/js/calendar.js"></script> 
+  <script type="text/javascript" src="/media/admin/js/admin/DateTimeShortcuts.js"></script>
+
+ <script type="text/javascript">
+  function popup(url, width, height)
+  {
+     fenster=window.open(url, "PopMeUp", "resizable=yes");
+     fenster.focus();
+     return false;
+  }
+  </script>
+
+</head>
+
+<body>
+
+{% include "header.html" %}
+
+{% block submenu %}
+{% endblock %}
+
+
+<table class="bodycontent">
+  <tr><td class="leftcontent" valign="top">
+    {% block content %}
+    {% endblock %}
+</div>
+</td><td class="sidebar" valign="top">
+  {% block sidebar %}
+  {% include "sidebar.html" %}
+  {% endblock %}
+</td></tr>
+</table>
+{% endspaceless %}
+</body>
+</html>

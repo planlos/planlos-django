@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Andere Seiten im Internet</h2>
+
+
+
+{% regroup object_list by category as cat_list %}
+
+
+{% for cat in cat_list %}
+<h3>{{ cat.grouper }}</h3>
+  {% for item in cat.list %}
+<ul>
+ <li><a href="{{ item.url }}">{{item.name}}</a></li>
+ </ul>
+  {% endfor %}
+{% endfor %}
+
+
+{% endblock %}

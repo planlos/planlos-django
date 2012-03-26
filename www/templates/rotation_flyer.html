@@ -1,0 +1,8 @@
+{% if flyer %}
+<div class="rotflyer">
+  <h2>Zufälliger Termin</h2>
+  <a href="{{flyer.flyer.url}}" target="_blank" onclick="return popup(this.href);">
+  <img width="200px" src="{{flyer.flyer.url }}" /></a>
+  <a href="{{flyer.get_absolute_url}}"> Was geht hier?</a>
+</div>
+{% endif %}

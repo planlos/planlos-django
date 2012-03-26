@@ -1,0 +1,408 @@
+/*
+
+//////////  Green Theme
+dark
+#05422b
+
+lighter
+#8a977b
+
+*/
+
+body
+{
+  font-family: sans-serif, Arial, Helvetica;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  padding-bottom: 150px;
+  background-color: #8a977b;
+  background-image: url(/media/images/sil_glow.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+/*  background-attachment: fixed; */
+}
+
+table.headertable
+{
+  width: 100%;
+  color: #ffffff;
+  background-color: #05422b;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+
+a
+{
+  color: #05422b;
+  text-decoration: underline;
+}
+
+a:hover
+{
+  color: #dddddd;
+}
+
+a:visited
+{
+}
+
+p.navbar
+{
+  font-weight: bold;
+  width: 48%;
+/*  background-color: #05422b; */f
+  background-color: #d5a44f;
+  color: #ffffff;
+  margin: 0;
+}
+
+p.navbar a
+{
+  padding: 2ex;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+p.navbar a:hover
+{
+  color:#ffffff;
+  text-decoration:underline;
+}
+
+p.navbar a:visited
+{
+  color:#ffffff;
+}
+
+.blogentry
+{
+  padding-top: 3ex;
+}
+
+table.bodycontent
+{
+  width:100%;
+  padding-right: 2ex;
+}
+
+table.bodycontent td.leftcontent
+{
+  vertical-align: top;
+  width: 50%;
+  min-width: 50%;
+
+}
+
+table.bodycontent td.title
+{
+  vertical-align: text-top;
+  width: 20em;
+  table-layout: fixed;
+}
+
+
+table.bodycontent td.sidebar
+{
+  width: 50%;
+}
+
+.sidebar table
+{
+  background-color: #ff0000;
+  border-collapse: collapse;
+  border-style: none;
+  border-width: 0;
+  padding-top: 0;
+}
+
+.sidebar td
+{
+  background-color: #8a977b;
+}
+
+.sidebar table.inner
+{
+  background-color: #8a977b;
+/*  color: #05422b; */
+/*  color:#ffffff; */
+  table-layout: fixed;
+}
+
+.sidebar table.inner th
+{
+  border: 0;
+  background-color: #05422b;
+  color: #ffffff;
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar table.inner td
+{
+  border-collapse:collapse;
+  border-style: solid;
+  border-width: 1px;
+  color: #05422b;
+  background-color: #ffffff;
+  text-align: center;
+  height: 16px;
+}
+
+.bigdate
+{
+  color: #ffffff;
+  font-size: Large;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+h2
+{
+  width:auto;
+  color: #ffffff;
+  background-color:#05422b;
+  text-align: center;
+  font-size: Large;
+  font-weight: bold;
+}
+
+
+h3:before
+{
+padding-left: 1em;
+  content: "\00BB\ " ;
+  color: #ffffff;
+}
+
+h3:after
+{
+float: right;
+padding-right: 1em;
+  content: " \00AB" ;
+  color: #ffffff;
+}
+
+h3
+{
+  width:100%;
+  /*color: #ffffff; */
+color: #05422b;
+
+/*  background-color:#aaaaaa; */
+  text-align: left;
+  /*text-decoration: underline;*/
+  font-size: normal;
+  font-weight: bold;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.author
+{
+  font-style: italic;
+}
+
+.date
+{
+  color: #ffffff;
+}
+
+.date:before
+{
+  content: "\00BB\ " ;
+  color: #ffffff;
+  font-size: larger;
+}
+
+.date:after
+{
+  content: " \00AB" ;
+  font-size: larger;
+  color: #ffffff;
+}
+
+.feature
+{
+    width: 300px;
+}
+
+.rotflyer
+{
+    width: 300px;
+}
+
+
+.rotflyer img
+{
+  border: 0;
+  width: 160px;
+}
+
+
+.etitle
+{
+  color: #05422b ;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.locationname
+{
+  color: #05422b ;
+  font-weight: bold;
+  font-size:large;
+}
+
+
+.whitebold
+{
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.white
+{
+  color: #ffffff;
+}
+
+.red
+{
+  color: #ff0000;
+}
+
+.red-bold
+{
+  font-weight: bold;
+  color: #ab3333;
+}
+
+
+.submenu
+{
+  border-top: solid 2px;
+  padding-top: 1ex;
+  border-color: #05422b;
+}
+
+.right
+{
+    text-align: right;
+}
+
+
+.submenu a
+{
+  padding-left: 2ex;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: smaller;
+}
+
+.submenu a:hover
+{
+  text-decoration: underline;
+}
+
+.submenu a:visited
+{
+  text-decoration: none;
+
+}
+
+
+/* Location detail*/
+.addressblock
+{ 
+  padding-left: 2ex;
+  color: #ffffff;
+  border: solid 1px;
+}
+
+.addressblock h4
+{ 
+  font-size: larger;
+}
+
+.vote_frame
+{
+    width: 50%;
+    color: #05422b;
+    border: solid 2px;
+    padding: 1ex;
+    margin-bottom: 1ex;
+}
+
+.pagination
+{
+    text-align:right;
+}
+
+.step-links a
+{
+    text-decoration: none;
+}
+/* //////////  Green Theme
+dark
+#05422b
+
+lighter
+#8a977b
+*/
+.current
+{
+    background-color: #05422b;
+    text-align:center;
+    border-color: #05422b;
+    color:#8a977b;
+    border:1px solid;
+    margin: 0.2ex;
+    padding: 0.5ex;
+}
+
+.pagenum
+{
+    text-align:center;
+    border:1px solid;
+    border-color: #05422b;
+    padding: 0.5ex;
+    background: #8a977b;
+    margin: 0.2ex;
+    color:#000000;
+}
+
+.fast
+{
+ border: 0;
+}
+
+.fast th
+{
+    border-bottom: 1px solid black;
+}
+
+.fast td
+{
+border-bottom: 1px solid black;
+border-left: 1px solid black;
+}
+
+.planlosfeeds
+{
+	width: 300px;
+    	width: 300px;
+}
+
+.planlosfeeds a
+{
+}
+
+.planlosfeeds img
+{
+	padding: 1px 1px 1px 5px;
+	border:0;
+}

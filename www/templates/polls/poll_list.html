@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load markup %}
+
+{% block content %}
+
+{% for i in object_list %}
+    <h3>{{i.question}}</h3>
+    Diese Umfrage läuft erstmal bis zum <div class="poll_date">{{i.close_date|date:"d.m.y"}}</div>
+    <p>Zum <a href="{{i.get_absolute_url}}">Mitbestimmen!</a>
+    </p>
+{% endfor %}
+
+{% endblock %}
+

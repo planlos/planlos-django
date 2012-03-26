@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Wo ist was?</h2>
+{% for i in object_list %}
+
+<p>
+<table>
+  <tr>
+    <td class="title">
+    <span class="locationname">{{ i.name }}</span>
+      <br>
+    <span class="location">{{ i.address|linebreaks }}</span>
+    </td>
+    <td>
+      {{i.selfportrait|striptags|truncatewords:20}}
+      <a href="{{ i.get_absolute_url }}"><br/>mehr</a>
+    </td>
+  </tr>
+</table>
+
+</p>
+
+{% endfor %}
+{% endblock %}
+

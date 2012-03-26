@@ -1,0 +1,20 @@
+.graph { 
+        position: relative; /* IE is dumb */
+        width: 200px; 
+        border: 1px solid #05422b; 
+        padding: 2px; 
+        margin-right: 1ex;
+        margin-left: 1ex;
+}
+
+.graph .bar { 
+        display: block;
+        position: relative;
+        background: #05422b; 
+        text-align: center; 
+        color: #fff; 
+        height: 2em; 
+        line-height: 2em;            
+}
+
+.graph .bar span { position: absolute; left: 1em; }

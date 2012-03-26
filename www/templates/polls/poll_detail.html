@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load markup %}
+
+{% block content %}
+
+<h3>Umfrage ({{object.id}})</h3>
+Voten!!!!
+    <h4>{{object.question}}?</h4>
+
+
+    {% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
+<form action="/{{ object.id }}/vote/" method="post">
+{% for choice in poll.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+
+</form>
+
+
+    Bis zum <div class="poll_date">{{object.close_date|date:"d.m.y  G"}} Uhr</div>
+    noch schnell mitmachen!
+
+{% endblock %}
+
+

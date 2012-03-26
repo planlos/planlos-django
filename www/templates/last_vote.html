@@ -1,0 +1,15 @@
+<h5>Umfrage:</h5>
+<div class="vote_frame">
+<span class="white"><strong>{{poll.question}}</strong></span>
+<p class="voteform">
+<form action="/polls/{{ poll.id }}/vote/" method="post">
+{% for choice in poll.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" {% ifequal forloop.counter 1 %}checked{% endifequal %} />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice }}</label><br/>
+{% endfor %}
+<input type="submit" value="Vote" />
+
+</form>
+<a href="/polls/{{poll.id}}/results/">Ergebnisse anzeigen</a>
+</p>
+</div>

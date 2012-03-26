@@ -1,0 +1,4 @@
+*.pyc
+*~
+secrets.py
+settings_*.py

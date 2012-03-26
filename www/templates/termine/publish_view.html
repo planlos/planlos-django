@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block submenu %}
+<div class="submenu">
+  <span style="font-size:large">
+<a href="/termine/create">Neuen Termin erstellen</a>
+
+{% if user.is_superuser %}
+&nbsp;&nbsp;
+<a href="/termine/fast_admin">Check unpublished</a>
+{% endif %}
+  &nbsp;&nbsp;
+<a href="/termine/logout">Logout</a>
+  </span>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<p>
+Du bist <b>{{ group.first_name }}</b> ( {{ group.username }} )<br>
+</p>
+<h4>Einträge anderer Gruppen</h4>
+{% if other_entries %}
+<table style="border-spacing: 1ex;border:solid 1px;padding: 1ex;">
+  <tr><th>Datum</th><th>Zeit</th><th>Ort</th><th>Titel</th></tr>
+{% for e in other_entries %}
+  {% if e.is_pub %}
+<tr><td>{{e.datum|date:"d.m.y"}}</td><td>{{e.time|time:"G:i"}}</td><td>{{e.location.name}}</td><td> {{ e.title }} </td></tr>
+  {% else %}
+  <tr><td><span class="red-bold">{{e.datum|date:"d.m.y"}}</span></td><td><span class="red-bold">{{e.time|time:"G:i"}}</span></td><td><span class="red-bold">{{e.location.name}}</span></td><td><span class="red-bold">{{ e.title }}</span> </td></tr>
+  {% endif %} 
+    {% endfor %}
+</table>
+{% else %}
+    <p>No Entries are available.</p>
+{% endif %}
+<h4>Eigene Einträge ({{ group.first_name }})</h4>
+<p>
+Rot dargestellte Termine sind von der Planlos-Crew noch nicht
+bestätigt worden und werden daher in der Terminübersicht noch nicht angezeigt!
+</p>
+{% if group_entries %}
+<table style="border-spacing: 1ex;border:solid 1px;padding: 1ex;">
+  <tr><th>Datum</th><th>Zeit</th><th>Ort</th><th>Titel</th><th>&nbsp;</th></tr>
+  {% for e in group_entries %}
+  {% if e.is_pub %}
+  <tr><td>{{e.datum|date:"d.m.y"}}</td><td>{{e.time|time:"G:i"}}</td><td>{{e.location.name}}</td><td>{{ e.title }} </td><td><a href="/termine/edit/{{e.id}}">Update</a></td></tr>
+  {% else %}
+  <tr><td><span class="red-bold">{{e.datum|date:"d.m.y"}}</span></td><td><span class="red-bold">{{e.time|time:"G:i"}}</span></td><td><span class="red-bold">{{e.location.name}}</span></td><td><span class="red-bold">{{ e.title }}</span> </td><td><a href="/termine/edit/{{e.id}}">Update</a></td></tr>
+  {% endif %} 
+  {% endfor %}
+
+    </table>
+{% else %}
+    <p>No Entries are available.</p>
+{% endif %}
+<a href="/termine/create">Neuen Termin erstellen</a>
+{% endblock %}

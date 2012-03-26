@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block submenu %}
+{% include "termine/tage_menu.html" %}
+{% endblock %}
+{% load markup %}
+
+{% block content %}
+<h2>{{ object.title }}</h2>
+<table>
+  <tr>
+    <td style="vertical-align:top;"><span class="white">Wo:</span></td>
+    <td>
+      {% if object.location.url %}
+      <a href=" {{object.location.url}} ">{{object.location.name}}</a>
+      {% else %}
+      {{object.location.name}}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+      <td style="vertical-align:top;"><span class="white">Wann:</span></td>
+      <td>{{object.datum|date:"d.m.y"}} um {{object.time|time:"G"}} Uhr</td>
+  </tr>
+  <tr>
+      <td style="vertical-align:top;"><span class="white">Was:</span></td><td>{{object.type}}</td>
+  </tr>
+  <tr>
+      <td style="vertical-align:top;"><span class="white">Kurz:</span></td><td>{{object.short_desc}}
+  </tr>
+  <tr>
+      <td> </td><td>{{object.desc|textile}}</td>
+  </tr>
+  <tr>
+  	{% if object.flyer %}
+      <td> </td><td><img width="100%" src="{{object.flyer.url }}" /></td>
+      {% endif %}
+  </tr>
+</table>
+
+
+{% endblock %}

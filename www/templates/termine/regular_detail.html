@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load  markup %}
+{% block content %}
+<div class="entry">
+<div class="title">{{ object.title }}
+<div class="location">
+  {% if object.exturl %}
+  <a href=" {{object.exturl}} ">{{object.location}}</a>
+  {% else %}
+  {{object.location.name}}
+  {% endif %}
+</div>
+</div>
+<div class="date">{{ object.repeater }}. {{object.get_day_display}} im Monat um {{object.time|time:"G"}} Uhr</div>
+
+<p>{{object.short_desc}}</p>
+<p>{{object.desc|textile}}</p>
+</div>
+
+
+{% endblock %}

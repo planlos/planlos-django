@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load markup %}
+
+{% block content %}
+
+<h2>Umfrage: </h2>
+
+<h3>{{poll.question}}</h3>
+
+<table>
+    {% for answer, val in graph.items %}
+        <tr>
+        <td><div class="graph"><span class="bar" style="width: {{val}}%;">{{val}}%</strong></div></td><td style="text-align: left;"><span class="white">{{answer}}</span></td>
+        </tr>
+    {% endfor %}
+</table>
+<p>
+Insgesamt haben {{num_votes}} Leute an dieser Umfrage teilgenommen.<br/>
+</p>
+{% endblock %}

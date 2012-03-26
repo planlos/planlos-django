@@ -1,0 +1,13 @@
+{% load markup %}
+<table>
+  <tr>
+    <td class="title">
+    <div class="etitle">{{ entry.title }}</div>
+    <span class="date">{{entry.pub_date|date:"d.m.Y"}}&nbsp;&nbsp;&nbsp;{{entry.pub_date|date:"G:i"}} Uhr</span>
+    <br />von<span class="author"> {{entry.author}}</span>
+    </td>
+    <td>
+      {{entry.content|textile}}  {# |truncatewords:50}}{% url  %} #}
+    </td>
+  </tr>
+</table>

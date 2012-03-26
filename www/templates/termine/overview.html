@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block submenu %}
+{% include "termine/tage_menu.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% if regulars_today %}
+<h2>Regelmäßiges für heute ({{today|date:"d.m.y"}})</h2>
+    {% for e in regulars_today %}
+        {% include "termine/termin_short.html" %}
+    {% endfor %}
+{% endif %}
+
+<h2>Monatsübersicht</h2>
+{% if filters %}
+<span class="right"><form action="/termine/" method="post">{% csrf_token %}
+<label for="sort_filter"><span class="whitebold">Filtern:</span></label><select name="type_filter" id="sort_filter">
+{% for key, value in filters.items %}
+    {% ifequal key filter_type %}
+        <option value="{{key}}" selected="selected">{{value}}</option>
+    {% else %}
+        <option value="{{key}}">{{value}}</option>
+    {% endifequal %}
+{% endfor %}
+</select>
+<input type="submit" value="Go" />
+</form>
+</span>
+{% endif %}
+{% if entries %}
+    {% for d in entries %}
+       <h3>{{d.0|date:"l"}} &bull; {{d.0|date:"d.m.y"}}</h3>
+       {% for e in d.1%}
+           {% include "termine/termin_short.html" %}
+       {% endfor %}
+    {% endfor %}
+{% else %}
+    <p>No Entries are available.</p>
+{% endif %}
+{% endblock %}

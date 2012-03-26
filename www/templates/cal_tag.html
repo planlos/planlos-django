@@ -1,0 +1,75 @@
+{% spaceless %}
+<table>
+  <tr><td>
+
+<table class="inner">
+  <tr><th colspan="7" align="center">{{ today|date:"F" }}</th></tr>
+<tr>
+<th>Mo</th>
+<th>Di</th>
+<th>Mi</th>
+<th>Do</th>
+<th>Fr</th>
+<th>Sa</th>
+<th>So</th>
+</tr>
+{% for week in current_calendar %}
+<tr>
+  {% for day in week %}
+     {% ifequal day.0 today.day %}
+        <td id="today">
+     {% endifequal %}
+     {% ifnotequal day.0 today.day %}
+        <td>
+     {% endifnotequal %} 
+     {% if day.0 %}
+        {% if day.1 %}
+           <div class="ok">
+	     <b><a href="/termine/{{ today.year }}/{{ today.month }}/{{day.0 }}">{{day.0}}</a></b>
+	   </div>
+        {% else %}
+             {{day.0}}
+        {% endif %}
+     {% endif %}
+  </td>
+  {% endfor %}
+</tr>
+  {% endfor %}
+</table>
+
+</td><td>
+<!-- zweiter monat -->
+<table class="inner">
+  <tr><th colspan="7" align="center">{{ next_today|date:"F" }}</th>
+  </tr>
+<tr>
+<th>Mo</th>
+<th>Di</th>
+<th>Mi</th>
+<th>Do</th>
+<th>Fr</th>
+<th>Sa</th>
+<th>So</th>
+</tr>
+{% for nweek in next_calendar %}
+<tr>
+  {% for nday in nweek %}
+    <td>
+    {% if nday.0 %}
+       {% if nday.1 %}
+      	 <div class="ok">
+            <b><a href="/termine/{{ next_today.year }}/{{ next_today.month }}/{{ nday.0 }}">{{nday.0}}</a></b>
+	   </div>
+       {% else %}
+           {{nday.0}}
+       {% endif %}
+    {% endif %}
+    </td>
+  {% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+{% endspaceless %}

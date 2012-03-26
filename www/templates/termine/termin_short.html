@@ -1,0 +1,22 @@
+<table>
+  <tr>
+     <td style="width:20em;">
+          <div class="etitle">{{ e.title }}</div>
+        <span class="white">{{e.type}} </span><br/>
+          <span class="location">
+            {% if e.location.url %}
+                <a href=" {{e.location.url}} ">{{e.location}}</a>
+            {% else %}
+                {{e.location.name}}
+            {% endif %}
+          </span>
+        </br>
+          <!--  <div class="date">{{e.datum|date:"d.m.y"}} um {{e.time|time:"G"}} Uhr</div> -->
+          &nbsp;&nbsp;<span class="date">{{e.time|time:"G:i"}} Uhr</span>
+     </td>
+     <td>
+        <p>{{e.short_desc}}<a href="{{ e.get_absolute_url }}"><br/>more...</a></p>
+     </td>
+  </tr>
+</table>
+

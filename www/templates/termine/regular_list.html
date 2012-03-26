@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Was geht immer?</h2>
+
+
+{% regroup object_list by day as day_list %}
+
+
+
+{% for dayitem in day_list %}
+<h2>{{dayitem.list.0.get_day_display}}</h2>
+  {% for item in dayitem.list %}
+       <table>
+  <tr><td style="width:20em;">
+  <div class="etitle">{{ item.title }}</div>
+  <span class="location">
+    {% if item.exturl %}
+    <a href=" {{item.exturl}} ">{{item.location}}</a>
+    {% else %}
+    {{item.location.name}}
+    {% endif %}
+  </span>
+  &nbsp;&nbsp;<span class="date">Jeden {{item.repeater}}. um {{item.time|time:"G:i"}} Uhr</span>
+  </td>
+  <td>
+
+    <p>{{item.short_desc}}<a href="{{ item.get_absolute_url }}"><br/>more...</a></p>
+  </td>
+</tr>
+</table>
+
+{% endfor %}
+{% endfor %}
+{% endblock %}
+
+

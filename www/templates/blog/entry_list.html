@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%load calendar_tags%}
+{% block content %}
+<p>
+<h2>Was ist <i>Planlos?</i></h2>
+Planlos ist ein unkommerzieller Terminweitervermittler.
+Finanziert ist das ganze ausschließlich auf Spendenbasis.
+Inhaltlich haben wir auf die Veranstaltungen, sowie weiterführende Links
+keinerlei Einfluss noch irgendeine Verantwortung.
+Termine könnt ihr gerne auch an termine(&auml;t)planlosbremen.de schicken.
+(unser GPG (PGP) Key: 0x9431ADB4 zum Beispiel auf http://wwwkeys.de.pgp.net oder
+<a href="/media/planlos_key.gpg">hier</a>.
+Und Leute macht mal ordentlich was in Bremen und umzu!
+</p>
+
+
+<h2>Planet Planlos News</h2>
+<div class="planet">
+{% include "blog/index.html" %}
+</div>
+{% endblock %}

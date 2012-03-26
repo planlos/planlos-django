@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/login.css{% endblock %}
+{% block bodyclass %}login{% endblock %}
+{% block content_title %}{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+
+
+<h2>Hier könnt ihr eure Termine selbst eintragen</h2>
+<p>Konzertgruppen, Veranstaltungsgruppen, Häuser etc. die regelmäßig
+Termine haben, bekommen einen Zugang zum Selbsteintragen.
+So können die eigenen Termine einfach und immer aktuell eingetragen
+und gegebenenfalls korrigiert werden. Neue Termine müsen jedoch erst
+von der Kalendercrew freigeschaltet werden.</p>
+<p>
+Bitte tragt auch noch zeitlich entfernte Termine hier ein, damit
+andere Gruppen auch planen können und um möglichst Überschneidungen
+und Konkurrenzveranstaltungen vermieden werden können. Dies erspart
+vielen VeranstalterInnen zusätzlichen Organisationsaufwand. Es liegt
+an euch!
+</p>
+<p>
+Falls ihr zu keiner Gruppe gehört und nur einzelne Termine
+veröffentlichen wollt, dann schreibt bitte wie bisher eine E-Mail mit
+allen relevanten Daten (Ort, Zeit, Datum, Was überhaupt und kurze
+Beschreibung) an <span class="white"><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#101;&#114;&#109;&#105;&#110;&#101;&#64;&#112;&#108;&#97;&#110;&#108;&#111;&#115;&#98;&#114;&#101;&#109;&#101;&#110;&#46;&#100;&#101;">&#116;&#101;&#114;&#109;&#105;&#110;&#101;&#64;&#112;&#108;&#97;&#110;&#108;&#111;&#115;&#98;&#114;&#101;&#109;&#101;&#110;&#46;&#100;&#101;</a></span>
+</p>
+
+{% if error_message %}
+<p class="errornote">{{ error_message }}</p>
+{% endif %}
+<div id="content-main">
+<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+  <table>
+<div class="form-row">
+  <tr><td>
+    <label for="id_username">{% trans 'Username:' %}</label></td><td> <input type="text" name="username" id="id_username" /></td></tr>
+  </div>
+  <div class="form-row">
+    <tr><td>
+    <label for="id_password">{% trans 'Password:' %}</label></td><td> <input type="password" name="password" id="id_password" />
+    <input type="hidden" name="this_is_the_login_form" value="1" />
+    <input type="hidden" name="post_data" value="{{ post_data }}" />
+      </td></tr>
+  </div>
+  <div class="submit-row">
+    <tr><td>
+    <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}" /></td><td>&nbsp;</td></tr>
+  </div>
+  </table>
+</form>
+
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+</div>
+{% endblock %}

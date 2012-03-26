@@ -1,0 +1,13 @@
+<div class="rotflyer">
+<h2>Die nächsten Termine</h2>
+{% regroup termine by datum as date_list %}
+<!-- <span style="padding-left:2ex;padding-top:2ex;font-weight:bold;">Nächste Termine:</span> -->
+{% for termin in date_list %}
+  <span style="font-size:larger;font-weight:bold;padding: 2ex; padding-top:2ex;color:#ffffff;">{{termin.grouper|date:"j. F"}}</span>
+  <ul style="margin: 0;">
+    {% for item in termin.list %}
+    <li><a href="{{item.get_absolute_url }}">{{item.title|truncatewords:7}}</a></li>
+    {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
