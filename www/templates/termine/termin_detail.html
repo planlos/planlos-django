@@ -6,6 +6,10 @@
 {% load markup %}
 
 {% block content %}
+
+{% if not object.is_pub %}
+<div class="unpublished">
+{% endif %}
 <h2>{{ object.title }}</h2>
 <table>
   <tr>
@@ -20,7 +24,7 @@
   </tr>
   <tr>
       <td style="vertical-align:top;"><span class="white">Wann:</span></td>
-      <td>{{object.datum|date:"d.m.y"}} um {{object.time|time:"G"}} Uhr</td>
+      <td>{{object.datum|date:"d.m.y"}} um {{object.time|time:"G:i"}} Uhr</td>
   </tr>
   <tr>
       <td style="vertical-align:top;"><span class="white">Was:</span></td><td>{{object.type}}</td>
@@ -32,11 +36,16 @@
       <td> </td><td>{{object.desc|textile}}</td>
   </tr>
   <tr>
+    <td style="vertical-align:top;"><span class="white">URL:</span></td><td>{{object.url}}</td>
+  </tr>
+  <tr>
   	{% if object.flyer %}
       <td> </td><td><img width="100%" src="{{object.flyer.url }}" /></td>
       {% endif %}
   </tr>
 </table>
-
+{% if not object.is_pub %}
+<div/>
+{% endif %}
 
 {% endblock %}

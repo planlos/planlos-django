@@ -406,3 +406,11 @@ border-left: 1px solid black;
 	padding: 1px 1px 1px 5px;
 	border:0;
 }
+
+.unpublished
+{
+    background-image: url('/media/images/unpublished.png')
+    filter: Alpha(Opacity=10, Style=0); 
+    -moz-opacity: 50%;
+    opacity: 50%;
+}
