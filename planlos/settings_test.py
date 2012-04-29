@@ -66,7 +66,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'planlos.urls'
 
 TEMPLATE_DIRS = (
-    "/home/planlos/planlos-django/www/templates/"
+    "/home/planlos/planlos-django-test/www/templates/"
 )
 
 INSTALLED_APPS = (

@@ -1,0 +1,30 @@
+{% if event %}
+<div class="feature">
+<h2>Featured Event</h2>
+<h3>{{ event.title }}</h3>
+<p>
+        </br>
+          <!--  <div class="date">{{e.datum|date:"d.m.y"}} um {{e.time|time:"G"}} Uhr</div> -->
+          <span class="date">{{event.datum}}--{{event.time|time:"G:i"}} Uhr</span>
+ &nbsp;&nbsp; <span class="location">
+            {% if event.location.url %}
+                <a href=" {{event.location.url}} ">{{event.location}}</a>
+            {% else %}
+                {{event.location.name}}
+            {% endif %}
+          </span>
+
+</p>
+<p><strong>Planlos empfiehlt:</strong> {{comment}}</p>
+<p>
+<strong>Beschreibung:</strong>
+{{event.desc|striptags|safe|truncatewords:35}}
+<a href="{{event.get_absolute_url}}">mehr lesen</a>
+</p>
+{% if event.flyer %}
+  <a href="{{event.flyer.url}}" target="_blank" onclick="return popup(this.href);">
+<img width="250px" src="{{event.flyer.url}}" /></a>
+
+{% endif %}
+</div>
+{% endif %}
