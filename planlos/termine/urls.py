@@ -23,11 +23,11 @@ location_dict = {
 
 def generic_pub_and_user(request, object_id):
     if request.user.is_anonymous():
-        object_dict2 = Termin.objects.all().exclude(is_pub=False)
+        object_dict2 = Termin.objects.all().filter(is_pub=True)
+    elif request.user.is_superuser:
+        object_dict2 = Termin.objects.all()
     else:
-        object_dict2 = Termin.objects.all().filter( Q(is_pub=True) | Q(group=request.user) )
-	#all().filter(is_pub=True).filter(group=request.user)
-    #print "DEBUG: ", object_dict2
+        object_dict2 = Termin.objects.all().filter(Q(is_pub=True) | Q(group=request.user) )
     return object_detail(request, object_dict2, object_id)
 
 urlpatterns = patterns('',

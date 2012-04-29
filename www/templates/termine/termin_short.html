@@ -1,7 +1,11 @@
+{% if not e.is_pub %}
+<div class="unpublished">
+<div class="transbox">
+{% endif %}
 <table>
   <tr>
      <td style="width:20em;">
-          <div class="etitle">{{ e.title }}</div>
+          <div class="etitle">{% if not e.is_pub %}(unpublished){% endif%} {{ e.title }}</div>
         <span class="white">{{e.type}} </span><br/>
           <span class="location">
             {% if e.location.url %}
@@ -20,3 +24,7 @@
   </tr>
 </table>
 
+{% if not e.is_pub %}
+</div>
+</div>
+{% endif %}

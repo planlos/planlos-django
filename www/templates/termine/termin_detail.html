@@ -9,6 +9,7 @@
 
 {% if not object.is_pub %}
 <div class="unpublished">
+<div class="transbox">
 {% endif %}
 <h2>{{ object.title }}</h2>
 <table>
@@ -35,9 +36,9 @@
   <tr>
       <td> </td><td>{{object.desc|textile}}</td>
   </tr>
-  <tr>
-    <td style="vertical-align:top;"><span class="white">URL:</span></td><td>{{object.url}}</td>
-  </tr>
+{% if object.url %}
+  <tr><td style="vertical-align:top;"><span class="white">URL:</span></td><td>{{object.url}}</td></tr>
+{% endif %}
   <tr>
   	{% if object.flyer %}
       <td> </td><td><img width="100%" src="{{object.flyer.url }}" /></td>
@@ -45,7 +46,8 @@
   </tr>
 </table>
 {% if not object.is_pub %}
-<div/>
+</div>
+</div>
 {% endif %}
 
 {% endblock %}

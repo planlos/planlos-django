@@ -11,6 +11,8 @@ from django.forms import ModelForm
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import InvalidPage
 from django.core.context_processors import csrf
+from django.db.models import Q
+
 
 import datetime
 from kalender_helpers import *
@@ -46,7 +48,11 @@ def get_regulars(day):
 
 def day(request, year, month, day):
     today = datetime.datetime(int(year), int(month), int(day))
-    thisday = Termin.objects.filter( is_pub=True, datum=today )
+    if request.user.is_superuser:
+    	thisday = Termin.objects.filter(datum=today)
+    else:
+    	thisday = Termin.objects.filter(datum=today).filter( Q(is_pub=True) | Q(group=request.user))
+
     weekday = today.weekday()
     regulars = get_regulars(today)
     t = loader.get_template('termine/day.html')
@@ -72,9 +78,9 @@ def overview(request):
         if request.method == 'POST':
             filter_type = int(request.POST['type_filter'])
         if filter_type != 0:
-            entries = Termin.objects.filter( is_pub=True ).filter(datum=day).filter(type=filter_type)
+            entries = Termin.objects.filter( Q(is_pub=True) | Q(group=request.user) ).filter(datum=day).filter(type=filter_type)
         else:
-            entries = Termin.objects.filter( is_pub=True ).filter(datum=day)
+            entries = Termin.objects.filter( Q(is_pub=True) | Q(group=request.user) ).filter(datum=day)
         if len(entries) > 0:
             month_entries.append( (day, entries) )
     reg_today = get_regulars( datetime.datetime.now() )
@@ -94,7 +100,7 @@ def nextdays(request, diff = 0):
         title = "Morgen"
     elif diff == 2:
         title = "Übermorgen"
-    entries = Termin.objects.filter( is_pub=True ).filter(datum=nday ).order_by('datum')
+    entries = Termin.objects.filter( Q(is_pub=True) | Q(group=request.user) ).filter(datum=nday ).order_by('datum')
     regulars = get_regulars( nday)
     c = Context({'today': nday,
                  'title': title,
