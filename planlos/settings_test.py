@@ -14,7 +14,7 @@ MANAGERS = ADMINS
 from secrets import *
 
 DATABASE_ENGINE = 'mysql'
-DATABASE_NAME = 'planlos_dev_db'
+DATABASE_NAME = 'planlostest'
 DATABASE_USER = 'planlos'
 
 # Local time zone for this installation. Choices can be found here:
