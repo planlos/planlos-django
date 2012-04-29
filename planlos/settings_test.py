@@ -37,7 +37,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/srv/www/test.planlosbremen.de/www/media/'
+MEDIA_ROOT = '/srv/www/test.planlosbremen.de/media/'
 MEDIA_URL = '/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
