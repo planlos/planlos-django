@@ -45,7 +45,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/planlos/planlosbremen.de/www/media/'
+MEDIA_ROOT = '/home/planlos/planlos-django/www/media/'
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
@@ -82,7 +82,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/planlos/planlosbremen.de/www/templates/"
+    "/home/planlos/planlos-django/www/templates/"
 )
 
 #TEMPLATE_CONTEXT_PROCESSORS =  (
