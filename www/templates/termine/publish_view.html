@@ -47,7 +47,8 @@ bestätigt worden und werden daher in der Terminübersicht noch nicht angezeigt!
   {% if e.is_pub %}
   <tr><td>{{e.datum|date:"d.m.y"}}</td><td>{{e.time|time:"G:i"}}</td><td>{{e.location.name}}</td><td>{{ e.title }} </td><td><a href="/termine/edit/{{e.id}}">Update</a></td></tr>
   {% else %}
-  <tr><td><span class="red-bold">{{e.datum|date:"d.m.y"}}</span></td><td><span class="red-bold">{{e.time|time:"G:i"}}</span></td><td><span class="red-bold">{{e.location.name}}</span></td><td><span class="red-bold">{{ e.title }}</span> </td><td><a href="/termine/edit/{{e.id}}">Update</a></td></tr>
+  <tr><td><span class="red-bold">{{e.datum|date:"d.m.y"}}</span></td><td><span class="red-bold">{{e.time|time:"G:i"}}</span></td><td><span class="red-bold">{{e.location.name}}</span></td><td><span class="red-bold">{{ e.title }}</span> </td><td><a href="/termine/edit/{{e.id}}">Update</a>&nbsp;</td>
+<td><a href="/termine/termin/{{e.id}}">View</a></td></tr>
   {% endif %} 
   {% endfor %}
 
