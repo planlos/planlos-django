@@ -71,6 +71,9 @@ def overview(request):
     for i in types:
         filters[i.pk] = i.type
 
+    query = Q(is_pub=True)
+    if request.user.is_authenticated():
+        query = Q(is_pub=True) | Q(group=request.user)
     for i in range(31):
         entries = []
         day = today + datetime.timedelta(i)
@@ -78,9 +81,9 @@ def overview(request):
         if request.method == 'POST':
             filter_type = int(request.POST['type_filter'])
         if filter_type != 0:
-            entries = Termin.objects.filter( Q(is_pub=True) | Q(group=request.user) ).filter(datum=day).filter(type=filter_type)
+            entries = Termin.objects.filter(query)).filter(datum=day).filter(type=filter_type)
         else:
-            entries = Termin.objects.filter( Q(is_pub=True) | Q(group=request.user) ).filter(datum=day)
+            entries = Termin.objects.filter(query).filter(datum=day)
         if len(entries) > 0:
             month_entries.append( (day, entries) )
     reg_today = get_regulars( datetime.datetime.now() )
@@ -100,7 +103,10 @@ def nextdays(request, diff = 0):
         title = "Morgen"
     elif diff == 2:
         title = "Übermorgen"
-    entries = Termin.objects.filter( Q(is_pub=True) | Q(group=request.user) ).filter(datum=nday ).order_by('datum')
+    query = Q(is_pub=True)
+    if request.user.is_authenticated():
+        query = Q(is_pub=True) | Q(group=request.user)
+    entries = Termin.objects.filter(query).filter(datum=nday ).order_by('datum')
     regulars = get_regulars( nday)
     c = Context({'today': nday,
                  'title': title,
