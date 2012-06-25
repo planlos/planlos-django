@@ -81,7 +81,7 @@ def overview(request):
         if request.method == 'POST':
             filter_type = int(request.POST['type_filter'])
         if filter_type != 0:
-            entries = Termin.objects.filter(query)).filter(datum=day).filter(type=filter_type)
+            entries = Termin.objects.filter(query).filter(datum=day).filter(type=filter_type)
         else:
             entries = Termin.objects.filter(query).filter(datum=day)
         if len(entries) > 0:
