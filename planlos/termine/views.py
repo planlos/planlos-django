@@ -48,10 +48,13 @@ def get_regulars(day):
 
 def day(request, year, month, day):
     today = datetime.datetime(int(year), int(month), int(day))
+    query = Q(is_pub=True)
+    if request.user.is_authenticated():
+        query = Q(is_pub=True) | Q(group=request.user)
     if request.user.is_superuser:
     	thisday = Termin.objects.filter(datum=today)
     else:
-    	thisday = Termin.objects.filter(datum=today).filter( Q(is_pub=True) | Q(group=request.user))
+    	thisday = Termin.objects.filter(datum=today).filter(query)
 
     weekday = today.weekday()
     regulars = get_regulars(today)
