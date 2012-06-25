@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     (r'^newurl/',      'planlos.blog.views.newurl'),
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^links/',      'django.views.generic.list_detail.object_list', dict(link_dict ) ),
-    (r'^aktuelles/',       include('planlos.blog.urls')),
+#    (r'^aktuelles/',       include('planlos.blog.urls')),
     (r'^termine/',        include('planlos.termine.urls')),
     (r'^polls/',        include('planlos.polls.urls')),
     # Uncomment this for admin:
