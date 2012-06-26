@@ -127,7 +127,7 @@ class Termin(models.Model):
     group = models.ForeignKey(authmodel.User)
     location = models.ForeignKey(Location)
     room = models.CharField(max_length=10, blank=True)
-    flyer = models.ImageField(upload_to='images/flyer/', blank=True)
+    flyer = models.ImageField(upload_to='flyer/', blank=True)
 
     def __unicode__(self):
         return smart_unicode(self.title+" "+smart_unicode(self.datum))
