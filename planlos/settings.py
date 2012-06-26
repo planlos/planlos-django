@@ -13,11 +13,6 @@ MANAGERS = ADMINS
 # import passwords
 from secrets import *
 
-#DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-#DATABASE_NAME = '/home/jkur/projekte/planlos-bremen/hb-subs.net/kalender.db'             # Or path to database file if using sqlite3.
-#DATABASE_USER = ''             # Not used with sqlite3.
-#DATABASE_PASSWORD = ''         # Not used with sqlite3.
-
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
 DATABASE_NAME = 'planlosdev_db'             # Or path to database file if using sqlite3.
 DATABASE_USER = 'planlos'             # Not used with sqlite3.
@@ -48,9 +43,6 @@ USE_I18N = True
 MEDIA_ROOT = '/home/planlos/www/'
 
 # URL that handles the media served from MEDIA_ROOT.
-# Example: "http://media.lawrence.com"
-#MEDIA_URL = 'http://horkheimer.informatik.uni-bremen.de:8000/media/'
-#MEDIA_URL = 'http://planlosbremen.de/media/'
 MEDIA_URL = '/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
