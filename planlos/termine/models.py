@@ -126,7 +126,7 @@ class Termin(models.Model):
     is_pub = models.BooleanField()
     group = models.ForeignKey(authmodel.User)
     location = models.ForeignKey(Location)
-    room = models.CharField(max_length=10, blank=True)
+    room = models.CharField(max_length=20, blank=True)
     flyer = models.ImageField(upload_to='images/flyer/', blank=True)
 
     def __unicode__(self):
