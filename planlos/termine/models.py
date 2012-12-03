@@ -87,7 +87,7 @@ class Regular(models.Model):
 
     group = models.ForeignKey(authmodel.User)
     location = models.ForeignKey(Location)
-    room = models.CharField(max_length=10, blank=True)
+    room = models.CharField(max_length=20, blank=True)
     is_pub = models.BooleanField()
     exturl = models.URLField(max_length=100, blank=True)
 
