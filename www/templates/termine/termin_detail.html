@@ -20,6 +20,9 @@
       <a href=" {{object.location.url}} ">{{object.location.name}}</a>
       {% else %}
       {{object.location.name}}
+      {% endif %}</td></tr>
+	  {% if object.room %}
+			  <tr><td>&nbsp;</td><td>{{object.room}}</td></tr>
       {% endif %}
     </td>
   </tr>
