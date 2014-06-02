@@ -23,14 +23,21 @@ Du bist <b>{{ group.first_name }}</b> ( {{ group.username }} )<br>
 <h4>Einträge anderer Gruppen</h4>
 {% if other_entries %}
 <table style="border-spacing: 1ex;border:solid 1px;padding: 1ex;">
-  <tr><th>Datum</th><th>Zeit</th><th>Ort</th><th>Titel</th></tr>
+  <tr><th>Datum</th><th>Zeit</th><th>Ort</th><th>Titel</th><th>Aktionen</th><th>Aktionen</th><th>Aktionen</th></tr>
 {% for e in other_entries %}
+  <tr>
   {% if e.is_pub %}
-<tr><td>{{e.datum|date:"d.m.y"}}</td><td>{{e.time|time:"G:i"}}</td><td>{{e.location.name}}</td><td> {{ e.title }} </td></tr>
+	<td>{{e.datum|date:"d.m.y"}}</td><td>{{e.time|time:"G:i"}}</td><td>{{e.location.name}}</td><td> {{ e.title }} </td>
   {% else %}
-  <tr><td><span class="red-bold">{{e.datum|date:"d.m.y"}}</span></td><td><span class="red-bold">{{e.time|time:"G:i"}}</span></td><td><span class="red-bold">{{e.location.name}}</span></td><td><span class="red-bold">{{ e.title }}</span> </td></tr>
-  {% endif %} 
-    {% endfor %}
+	<td><span class="red-bold">{{e.datum|date:"d.m.y"}}</span></td><td><span class="red-bold">{{e.time|time:"G:i"}}</span></td><td><span class="red-bold">{{e.location.name}}</span></td><td><span class="red-bold">{{ e.title }}</span> </td>
+  {% endif %}
+  {% if  user.is_superuser %}
+	<td><a href="/termine/edit/{{e.id}}">Update</a>&nbsp;</td>
+	<td><a href="/termine/termin/{{e.id}}">View</a></td>
+	<td><a href="/termine/copy/{{e.id}}">Copy</a></td>
+  {% endif %}
+  </tr>
+{% endfor %}
 </table>
 {% else %}
     <p>No Entries are available.</p>
@@ -45,11 +52,31 @@ bestätigt worden und werden daher in der Terminübersicht noch nicht angezeigt!
   <tr><th>Datum</th><th>Zeit</th><th>Ort</th><th>Titel</th><th>&nbsp;</th></tr>
   {% for e in group_entries %}
   {% if e.is_pub %}
-  <tr><td>{{e.datum|date:"d.m.y"}}</td><td>{{e.time|time:"G:i"}}</td><td>{{e.location.name}}</td><td>{{ e.title }} </td><td><a href="/termine/edit/{{e.id}}">Update</a>&nbsp;</td>
-<td><a href="/termine/termin/{{e.id}}">View</a></td></tr>
+  <tr>
+	<td>{{e.datum|date:"d.m.y"}}</td>
+	<td>{{e.time|time:"G:i"}}</td>
+	<td>{{e.location.name}}</td>
+	<td>{{ e.title }} </td>
+	<td><a href="/termine/edit/{{e.id}}">Update</a>&nbsp;</td>
+	<td><a href="/termine/copy/{{e.id}}">Copy</a></td>
+	<td><a href="/termine/termin/{{e.id}}">View</a></td></tr>
   {% else %}
-  <tr><td><span class="red-bold">{{e.datum|date:"d.m.y"}}</span></td><td><span class="red-bold">{{e.time|time:"G:i"}}</span></td><td><span class="red-bold">{{e.location.name}}</span></td><td><span class="red-bold">{{ e.title }}</span> </td><td><a href="/termine/edit/{{e.id}}">Update</a>&nbsp;</td>
-<td><a href="/termine/termin/{{e.id}}">View</a></td></tr>
+  <tr>
+	<td>
+	  <span class="red-bold">{{e.datum|date:"d.m.y"}}</span>
+	</td>
+	<td>
+	  <span class="red-bold">{{e.time|time:"G:i"}}</span>
+	</td>
+	<td>
+	  <span class="red-bold">{{e.location.name}}</span>
+	</td>
+	<td>
+	  <span class="red-bold">{{ e.title }}</span>
+	</td>
+	<td><a href="/termine/edit/{{e.id}}">Update</a>&nbsp;</td>
+	<td><a href="/termine/copy/{{e.id}}">Copy</a></td>
+	<td><a href="/termine/termin/{{e.id}}">View</a></td></tr>
   {% endif %} 
   {% endfor %}
 

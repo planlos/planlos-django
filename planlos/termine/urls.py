@@ -49,6 +49,7 @@ urlpatterns = patterns('',
                        (r'morgen/$', 'termine.views.nextdays', {'diff': 1} ),
                        (r'logout', 'termine.views.logout_view'),
                        (r'edit/(?P<termin_id>\d+)/$', 'termine.views.edit'),
+                       (r'copy/(?P<termin_id>\d+)/$', 'termine.views.copy'),
                        (r'create', 'termine.views.create_entry'),
                        (r'create_generic', 'django.views.generic.create_update.create_object', info_dict),
                        )

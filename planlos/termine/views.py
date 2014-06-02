@@ -178,8 +178,9 @@ def logout_view(request):
 def may_edit(u, entry):
     if ( entry.group == u ):
         return True
-    else:
-        return False
+    if ( u.is_superuser ):
+        return True
+    return False
 
 @login_required
 def edit(request, termin_id):
@@ -217,6 +218,18 @@ def edit(request, termin_id):
         #return HttpResponse( fs+g.as_p()+fs2 )
     else:
         return HttpResponse("Keinen Zugriff")
+
+@login_required
+def copy(request, termin_id):
+    entry = get_object_or_404(Termin, pk=termin_id)
+    if may_edit(request.user, entry):
+        entry.pk = None
+        entry.is_pub = False
+        entry.save()
+        return HttpResponseRedirect('/termine/publish/')
+    else:
+        return HttpResponse("Keinen Zugriff")
+
 
 @login_required
 def fast_admin(request):
