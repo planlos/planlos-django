@@ -11,14 +11,31 @@ ADMINS = (
 MANAGERS = ADMINS
 
 # import passwords
-from secrets import *
+from planlos.secrets import *
 
-DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = 'planlosdev_db'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'planlos'             # Not used with sqlite3.
-#DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+import os
+
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(PROJECT_DIR, 'planlosdev.db'),
+#    }
+# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'localhost',
+        'NAME': 'planlosdev_db',
+        'USER': 'planlos',
+        'PASSWORD': DATABASE_PASSWORD,
+    }
+}
+
+
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
@@ -55,8 +72,8 @@ SECRET_KEY = 'n_yw3@c5kbjxmruo_nhnu!5awihp8*=8z)j_e784p+#x0aq8i5'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.load_template_source',
 )
 
@@ -74,7 +91,9 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/planlos/planlos-django/www/templates/"
+    "/home/planlos/planlos-django/www/templates/",
+    "../www/templates/"
+
 )
 
 #TEMPLATE_CONTEXT_PROCESSORS =  (
@@ -89,6 +108,7 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.syndication',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',

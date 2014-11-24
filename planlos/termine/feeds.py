@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.contrib.syndication.feeds import Feed
+from django.contrib.syndication.views import Feed
 from planlos.termine.models import Termin, Location, Regular
 from planlos.blog.models import Entry
 import datetime
