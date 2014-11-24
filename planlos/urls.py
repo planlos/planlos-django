@@ -21,15 +21,19 @@ feeds = {
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', 'django.views.generic.simple.redirect_to', { 'url':'/termine/'}),
+    (r'^$', 'django.views.generic.simple.redirect_to', {'url': '/termine/'}),
     (r'^newurl/',      'planlos.blog.views.newurl'),
-    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
-    (r'^links/',      'django.views.generic.list_detail.object_list', dict(link_dict ) ),
-#    (r'^aktuelles/',       include('planlos.blog.urls')),
+    # (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.Feed', {'feed_dict': feeds}),
+    (r'^feeds/termine/$', Termine_Syndication()),
+    (r'^feeds/heute/$', Heute_Syndication()),
+    (r'^feeds/admin_pub/$', Admin_Syndication()),
+    (r'^feeds/aktuelles/$', Blog_Syndication()),
+    (r'^links/',      'django.views.generic.list_detail.object_list', dict(link_dict)),
+    # (r'^aktuelles/',       include('planlos.blog.urls')),
     (r'^termine/',        include('planlos.termine.urls')),
     (r'^polls/',        include('planlos.polls.urls')),
     # Uncomment this for admin:
-    #(r'^admin/(.*)', admin.site.root),
+    # (r'^admin/(.*)', admin.site.root),
     url(r'^admin/', include(admin.site.urls)),
     # For static files
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/jkur/projekte/planlos-bremen/planlosbremen.de/www/media'}),
