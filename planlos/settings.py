@@ -1,6 +1,6 @@
 # Django settings for kal project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = False
 
 ADMINS = (
@@ -83,6 +83,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',    
+    'django.contrib.messages.middleware.MessageMiddleware',
 )
 
 ROOT_URLCONF = 'planlos.urls'
