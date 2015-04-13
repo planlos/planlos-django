@@ -1,0 +1,13 @@
+{% if werbung %}
+  <h2>Werbung</h2>
+  {% for ads in werbung %}
+	{% if ads.is_pub %}
+	  <div class="feature">
+		<p>{{ ads.text }}</p>
+		<a href="{{ads.link}}">
+		  <img width="250px" src="{{ads.flyer.url}}" />
+		</a>
+	  </div>
+	{% endif %}
+  {% endfor %}
+{% endif %}

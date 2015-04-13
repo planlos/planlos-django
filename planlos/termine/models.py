@@ -25,7 +25,6 @@ class Location(models.Model):
 	ordering = ['name']
 
 
-
 class Action_Type(models.Model):
     type = models.CharField(max_length=60)
 
@@ -147,3 +146,8 @@ class Feature(models.Model):
     comment = models.CharField(max_length=400)
     event = models.ForeignKey(Termin)
 
+class Werbung(models.Model):
+    link = models.URLField(max_length=200, blank=True)
+    text = models.TextField(blank=True)
+    flyer = models.ImageField(upload_to='images/werbung/', blank=True)
+    is_pub = models.BooleanField()

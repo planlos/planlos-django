@@ -1,7 +1,7 @@
 from django import template
 from datetime import datetime, date, timedelta
 import calendar
-from planlos.termine.models import Termin, Regular, Feature
+from planlos.termine.models import Termin, Regular, Feature, Werbung
 from planlos.polls.models import Poll, Choice
 import random
 
@@ -28,6 +28,11 @@ def show_rot_flyer():
         return {'flyer': 0 }
 
 
+@register.inclusion_tag('werbung.html')
+def show_werbung():
+    werbung = Werbung.objects.all()
+    return {'werbung': werbung}
+    
 @register.inclusion_tag('featured_event.html')
 def show_featured_event():
     featured_event = Feature.objects.all()
