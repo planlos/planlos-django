@@ -149,5 +149,5 @@ class Feature(models.Model):
 class Werbung(models.Model):
     link = models.URLField(max_length=200, blank=True)
     text = models.TextField(blank=True)
-    flyer = models.ImageField(upload_to='images/werbung/', blank=True)
+    flyer = models.ImageField(upload_to='images/ankuendigungen/', blank=True)
     is_pub = models.BooleanField()

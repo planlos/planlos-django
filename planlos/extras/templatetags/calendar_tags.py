@@ -32,7 +32,8 @@ def show_rot_flyer():
 def show_werbung():
     werbung = Werbung.objects.all()
     return {'werbung': werbung}
-    
+
+
 @register.inclusion_tag('featured_event.html')
 def show_featured_event():
     featured_event = Feature.objects.all()
